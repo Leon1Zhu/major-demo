@@ -5,16 +5,16 @@
           <i-col :span="spanLeft" class="layout-menu-left">
             <Menu active-name="1" theme="dark" width="auto">
               <div class="layout-logo-left"></div>
-              <Menu-item name="1" class="animateClass" :class="{'centerClass': spanLeft < 5}">
-                <Icon class="animateClass" type="ios-navigate" :size="iconSize"></Icon>
+              <Menu-item name="1"  :class="{'centerClass': spanLeft < 5}">
+                <Icon class="animateClass1" type="ios-navigate" :size="iconSize"></Icon>
                 <span class="layout-text">选项 1</span>
               </Menu-item>
-              <Menu-item name="2" class="animateClass" :class="{'centerClass': spanLeft < 5}">
-                <Icon class="animateClass" type="ios-keypad" :size="iconSize"></Icon>
+              <Menu-item name="2"  :class="{'centerClass': spanLeft < 5}">
+                <Icon class="animateClass1" type="ios-keypad" :size="iconSize"></Icon>
                 <span class="layout-text">选项 2</span>
               </Menu-item>
-              <Menu-item name="3" class="animateClass" :class="{'centerClass': spanLeft < 5}">
-                <Icon class="animateClass" type="ios-analytics" :size="iconSize"></Icon>
+              <Menu-item name="3"  :class="{'centerClass': spanLeft < 5}">
+                <Icon class="animateClass1" type="ios-analytics" :size="iconSize"></Icon>
                 <span class="layout-text">选项 3</span>
               </Menu-item>
             </Menu>
@@ -40,7 +40,8 @@
               </Breadcrumb>
             </div>
             <div class="layout-content">
-              <div class="layout-content-main">内容区域</div>
+              <router-view class="layout-content-main"></router-view>
+             <!-- <div class="layout-content-main">内容区域</div>-->
             </div>
             <div class="layout-copy">
               2011-2016 &copy; TalkingData
