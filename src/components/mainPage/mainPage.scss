@@ -30,11 +30,11 @@
     overflow: hidden;
   }
   .centerClass span{
-    display: table-cell;
-    vertical-align: middle;
     height: 50px;
     padding: 0 5px;
-    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .centerClass:hover>i,
   .centerClass:focus>i,

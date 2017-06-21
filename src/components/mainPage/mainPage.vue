@@ -5,7 +5,7 @@
           <i-col :span="spanLeft" class="layout-menu-left">
             <Menu active-name="1" theme="dark" width="auto">
               <div class="layout-logo-left"></div>
-              <Menu-item name="1"  :class="{'centerClass': spanLeft < 5}">
+              <Menu-item name="1"  :class="{'centerClass': spanLeft < 5}"  @click.native="push('departentManage')">
                 <Icon class="animateClass1" type="ios-navigate" :size="iconSize"></Icon>
                 <span class="layout-text">选项 1</span>
               </Menu-item>
@@ -80,6 +80,10 @@ import './mainPage.scss'
               this.spanLeft = 5;
               this.spanRight = 19;
             }
+          },
+          push(val){
+            this.$router.push({ path: val})
+            return;
           }
         }
     }
