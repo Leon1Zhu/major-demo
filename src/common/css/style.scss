@@ -3,4 +3,14 @@ html,body,#app{
   width:100%;
   height:100%;
 }
+.centerClass{
+  text-align: center;
+}
 
+.animateClass{
+  -webkit-transition: all .3s ease-in-out 0s;
+  -moz-transition: all .3s ease-in-out 0s;
+  -ms-transition: all .3s ease-in-out 0s;
+  -o-transition: all .3s ease-in-out 0s;
+  transition: all .3s ease-in-out 0s;
+}

@@ -1,39 +1,37 @@
 <template>
     <div class="mainPage">
-      <div class="layout">
+      <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
         <Row type="flex">
-          <i-col span="5" class="layout-menu-left">
-            <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']">
+          <i-col :span="spanLeft" class="layout-menu-left">
+            <Menu active-name="1" theme="dark" width="auto">
               <div class="layout-logo-left"></div>
-              <Submenu name="1">
-                <template slot="title">
-                  <Icon type="ios-navigate"></Icon>
-                  导航一
-                </template>
-                <Menu-item name="1-1">选项 1</Menu-item>
-                <Menu-item name="1-2">选项 2</Menu-item>
-                <Menu-item name="1-3">选项 3</Menu-item>
-              </Submenu>
-              <Submenu name="2">
-                <template slot="title">
-                  <Icon type="ios-keypad"></Icon>
-                  导航二
-                </template>
-                <Menu-item name="2-1">选项 1</Menu-item>
-                <Menu-item name="2-2">选项 2</Menu-item>
-              </Submenu>
-              <Submenu name="3">
-                <template slot="title">
-                  <Icon type="ios-analytics"></Icon>
-                  导航三
-                </template>
-                <Menu-item name="3-1">选项 1</Menu-item>
-                <Menu-item name="3-2">选项 2</Menu-item>
-              </Submenu>
+              <Menu-item name="1" class="animateClass" :class="{'centerClass': spanLeft < 5}">
+                <Icon class="animateClass" type="ios-navigate" :size="iconSize"></Icon>
+                <span class="layout-text">选项 1</span>
+              </Menu-item>
+              <Menu-item name="2" class="animateClass" :class="{'centerClass': spanLeft < 5}">
+                <Icon class="animateClass" type="ios-keypad" :size="iconSize"></Icon>
+                <span class="layout-text">选项 2</span>
+              </Menu-item>
+              <Menu-item name="3" class="animateClass" :class="{'centerClass': spanLeft < 5}">
+                <Icon class="animateClass" type="ios-analytics" :size="iconSize"></Icon>
+                <span class="layout-text">选项 3</span>
+              </Menu-item>
             </Menu>
           </i-col>
-          <i-col span="19">
-            <div class="layout-header"></div>
+          <i-col :span="spanRight">
+            <div class="layout-header">
+              <i-button type="text" @click="toggleClick">
+                <Icon type="navicon" size="32"></Icon>
+              </i-button>
+              <Menu mode="horizontal" active-name="1">
+                <div class="layout-assistant">
+                  <Menu-item name="1">二级导航</Menu-item>
+                  <Menu-item name="2">二级导航</Menu-item>
+                  <Menu-item name="3">二级导航</Menu-item>
+                </div>
+              </Menu>
+            </div>
             <div class="layout-breadcrumb">
               <Breadcrumb>
                 <Breadcrumb-item href="#">首页</Breadcrumb-item>
@@ -57,13 +55,31 @@
 import './mainPage.scss'
     export default{
         data(){
-            return {}
+            return {
+              spanLeft: 5,
+              spanRight: 19
+            }
+        },
+        computed: {
+          iconSize () {
+            return this.spanLeft === 5 ? 14 : 24;
+          }
         },
         components: {},
         created(){
         },
         mounted(){
         },
-        methods: {}
+        methods: {
+          toggleClick () {
+            if (this.spanLeft === 5) {
+              this.spanLeft = 2;
+              this.spanRight = 22;
+            } else {
+              this.spanLeft = 5;
+              this.spanRight = 19;
+            }
+          }
+        }
     }
 </script>
