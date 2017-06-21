@@ -19,13 +19,22 @@
     padding:0px;
     height: 50px;
   }
+  .ivu-icon{
+    display: block;
+  }
   .centerClass i{
     width:100%;
     height:50px;
     line-height:50px;
     position: relative;
     overflow: hidden;
-    text-align: center;
+  }
+  .centerClass span{
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+    padding: 0 5px;
+    width: 90px;
   }
   .centerClass:hover>i,
   .centerClass:focus>i,
