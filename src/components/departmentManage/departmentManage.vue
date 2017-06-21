@@ -12,6 +12,7 @@
         },
         components: {},
         created(){
+            this.$warningmsg("11","")
         },
         mounted(){
         },

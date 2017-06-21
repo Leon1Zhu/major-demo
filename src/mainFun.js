@@ -2,7 +2,29 @@
  * Created by zhuliang on 2017/4/14.
  */
 import Vue from 'vue'
-import $ from 'jquery'
-
+Vue.prototype.$infomsg = function(title,nodesc){
+  this.$Notice.info({
+    title: title,
+    desc: nodesc
+  });
+}
+Vue.prototype.$successmsg = function(title,nodesc){
+  this.$Notice.success({
+    title: title,
+    desc: nodesc
+  });
+}
+Vue.prototype.$warningmsg = function(title,nodesc){
+  this.$Notice.warning({
+    title: title,
+    desc: nodesc
+  });
+}
+Vue.prototype.$errormsg = function(title,nodesc){
+  this.$Notice.error({
+    title: title,
+    desc: nodesc
+  });
+}
 
 
