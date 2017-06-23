@@ -88,3 +88,8 @@ global.loginOut=function(){
   sessionStorage.setItem("AlienlabnewsUserInfo",null);
 }*/
 
+global.isNull =function (val){
+  if(val===null || val === undefined || val ==="")return true;
+  else return false;
+}
+

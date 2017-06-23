@@ -6,6 +6,7 @@ import iView from 'iview';
 import 'iview/dist/styles/iview.css';    // 使用 CSS
 import './common/css/reset.css'
 import './filter'
+import './common/css/fontClass.css'
 import './common/css/style.scss'
 import './globalFun'
 import './mainFun'

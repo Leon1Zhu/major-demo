@@ -27,4 +27,18 @@ Vue.prototype.$errormsg = function(title,nodesc){
   });
 }
 
+Vue.prototype.$confirm = function(title,content,surFun,canFun){
+  this.$Modal.confirm({
+    title: title,
+    content: content,
+    onOk: () => {
+      surFun()
+    },
+    onCancel: () => {
+      tcanFun()
+    }
+  });
+}
+
+
 

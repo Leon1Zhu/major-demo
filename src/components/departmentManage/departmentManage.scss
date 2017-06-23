@@ -1,15 +1,36 @@
-/*响应式*/
-@media (min-width: 720px) {
+.departmentManage{
+  position: relative;
+  .button-div{
+    width:100%;
+    text-align: right;
+  }
+
+  .department-content{
+    display: flex;
+    flex-wrap: wrap;
+    .departcard{
+      margin-top:1%;
+      margin-left:2%;
+      line-height:20px;
+      color: #adaba9;
+      background: #f9f9f9;
+    }
+  }
+
+  /*响应式*/
+  @media (min-width: 720px) {
+  }
+
+  @media (min-width: 1080px) {
+  }
+
+  @media (min-width: 1366px) {
+  }
+
+  @media (min-width: 1680px) {
+  }
+
+  @media (min-width: 1920px) {
+  }
 }
 
-@media (min-width: 1080px) {
-}
-
-@media (min-width: 1366px) {
-}
-
-@media (min-width: 1680px) {
-}
-
-@media (min-width: 1920px) {
-}
