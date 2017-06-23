@@ -6,6 +6,7 @@ Vue.use(Router)
 const notFound = resolve => require(['@/components/404'], resolve);
 const mainPage = resolve => require(['@/components/mainPage/mainPage'], resolve);
 const departentManage = resolve => require(['@/components/departmentManage/departmentManage'], resolve);
+const courseModule = resolve => require(['@/components/courseModule/courseModule'], resolve);
 
 export default new Router({
   /*mode: 'history',*/
@@ -20,6 +21,12 @@ export default new Router({
           // UserProfile 会被渲染在 User 的 <router-view> 中
           path: '/departentManage',
           component: departentManage
+        },
+        {
+          // 当 /user/:id/profile 匹配成功，
+          // UserProfile 会被渲染在 User 的 <router-view> 中
+          path: '/courseModule',
+          component: courseModule
         }
       ]
     }

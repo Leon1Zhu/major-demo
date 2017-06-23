@@ -5,7 +5,7 @@
           <i-col :span="spanLeft" class="layout-menu-left">
             <Menu active-name="1" theme="dark" width="auto">
               <div class="layout-logo-left"></div>
-              <Menu-item name="1"  :class="{'centerClass': spanLeft < 5}"  @click.native="push('departentManage')">
+              <Menu-item name="1"  :class="{'centerClass': spanLeft < 5}" >
                 <Icon class="animateClass1" type="ios-navigate" :size="iconSize"></Icon>
                 <span class="layout-text">选项 1</span>
               </Menu-item>
@@ -26,9 +26,9 @@
               </i-button>
               <Menu mode="horizontal" active-name="1">
                 <div class="layout-assistant">
-                  <Menu-item name="1">二级导航</Menu-item>
-                  <Menu-item name="2">二级导航</Menu-item>
-                  <Menu-item name="3">二级导航</Menu-item>
+                  <Menu-item name="1"><router-link to="/departentManage">部门管理</router-link></Menu-item>
+                  <Menu-item name="2"><router-link to="/courseModule">课程模块管理</router-link></Menu-item>
+                  <Menu-item name="3"><router-link to="/foo">Go to Foo</router-link></Menu-item>
                 </div>
               </Menu>
             </div>
