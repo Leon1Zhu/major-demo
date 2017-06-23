@@ -10,8 +10,8 @@
             <p >部门类型:{{department.depType}}</p>
             <p >部门简称:{{department.depAbbreviation}}</p>
             <p >创建时间：{{department.createTime}}</p>
-            <i class="iconfont icon-bianji pointer"  @click="managedepartment(department)"></i>
-            <i class="iconfont icon-shanchu pointer" @click="deleteDep(department)"></i>
+            <i class="iconfont icon-bianji pointer font-size-22"  @click="managedepartment(department)"></i>
+            <i class="iconfont icon-shanchu pointer font-size-22" @click="deleteDep(department)"></i>
           </div>
         </Card>
       </div>
@@ -20,9 +20,11 @@
         title="部门管理"
         v-model="modaldepartment"
         :mask-closable="false">
-        <p>对话框内容</p>
-        <p>对话框内容</p>
-        <p>对话框内容</p>
+        <Input class="dep-info-model" v-model="depItem.depName" placeholder="部门名称" ></Input>
+        <Input class="dep-info-model" v-model="depItem.depAbbreviation" placeholder="部门简称" ></Input>
+        <Select class="dep-info-model" v-model="depItem.depType">
+          <Option v-for="item in depType" :value="item.value" :key="item">{{ item.label }}</Option>
+        </Select>
       </Modal>
     </div>
 </template>
@@ -70,7 +72,10 @@ import './departmentManage.scss'
                     createTime:"2017-06-21"
                   },
                 ],
+              depItem: {
+              },
               modaldepartment:false,
+              depType:departmentType,
             }
         },
         components: {},
@@ -81,7 +86,7 @@ import './departmentManage.scss'
         },
         methods: {
           managedepartment(val){
-              val.depName
+              this.modaldepartment = true
           },
           deleteDep(val){
               this.$confirm("删除确认",'确认删除'+val.depName+'吗？',function(){console.log("sure")},function(){console.log("cancle")})

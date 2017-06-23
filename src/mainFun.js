@@ -35,7 +35,7 @@ Vue.prototype.$confirm = function(title,content,surFun,canFun){
       surFun()
     },
     onCancel: () => {
-      tcanFun()
+      canFun()
     }
   });
 }

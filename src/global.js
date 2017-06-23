@@ -20,6 +20,8 @@ if(process.env.NODE_ENV=="production"){
 }
 */
 
+global.departmentType=[{value:"教学部门",label:"教学部门"},{value:"行政部门",label:"行政部门"}]
+
 
 
 
