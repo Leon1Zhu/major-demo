@@ -38,7 +38,7 @@ import './departmentManage.scss'
                   {
                       id:1,
                       depName:"计算机与软件学院",
-                      depType:"教学部",
+                      depType:"教学部门",
                       depCddwNo:"1",
                       depAbbreviation:"计软院",
                       depSort:"1",
@@ -47,7 +47,7 @@ import './departmentManage.scss'
                   {
                     id:2,
                     depName:"机械工程学院",
-                    depType:"行政部",
+                    depType:"行政部门",
                     depCddwNo:"2",
                     depAbbreviation:"机械院",
                     depSort:"2",
@@ -56,7 +56,7 @@ import './departmentManage.scss'
                   {
                     id:3,
                     depName:"国际教育学院",
-                    depType:"教学部",
+                    depType:"教学部门",
                     depCddwNo:"3",
                     depAbbreviation:"国教院",
                     depSort:"3",
@@ -65,7 +65,7 @@ import './departmentManage.scss'
                   {
                     id:4,
                     depName:"航空航天学院",
-                    depType:"教学部",
+                    depType:"教学部门",
                     depCddwNo:"4",
                     depAbbreviation:"航天院",
                     depSort:"4",
@@ -86,6 +86,11 @@ import './departmentManage.scss'
         },
         methods: {
           managedepartment(val){
+              if(!isNull(val.depName)){
+                  this.depItem = val
+              }else{
+                this.depItem = {}
+              }
               this.modaldepartment = true
           },
           deleteDep(val){

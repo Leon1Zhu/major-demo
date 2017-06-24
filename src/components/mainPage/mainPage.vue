@@ -43,9 +43,6 @@
               <router-view class="layout-content-main"></router-view>
              <!-- <div class="layout-content-main">内容区域</div>-->
             </div>
-            <div class="layout-copy">
-              2011-2016 &copy; TalkingData
-            </div>
           </i-col>
         </Row>
       </div>
