@@ -1,5 +1,19 @@
+.course-info-model{
+  margin-top:2%;
+  margin-left:7.5%;
+  width:85%;
+}
 .courseModule{
-
+  position: relative;
+  display: flex;
+  .moduleContent{
+    position: relative;
+    height:100%;
+    margin-left:3%;
+    .button-div{
+      margin-bottom:2%;
+    }
+  }
   /*响应式*/
   @media (min-width: 720px) {
   }

@@ -1,7 +1,7 @@
 <template>
     <div class="departmentManage">
       <div class="button-div">
-        <Button class="add-dep-button" type="info" @click.native="managedepartment">新增部门</Button>
+        <Button class="add-dep-button" type="info" icon="plus" @click.native="managedepartment">新增部门</Button>
       </div>
       <div class="department-content">
         <Card :key="index" style="width:320px"  v-for="(department,index) in departmentInfo" class="departcard">
@@ -22,7 +22,7 @@
         :mask-closable="false">
         <Input class="dep-info-model" v-model="depItem.depName" placeholder="部门名称" ></Input>
         <Input class="dep-info-model" v-model="depItem.depAbbreviation" placeholder="部门简称" ></Input>
-        <Select class="dep-info-model" v-model="depItem.depType">
+        <Select class="dep-info-model" v-model="depItem.depType" placeholder="请选择部门类型">
           <Option v-for="item in depType" :value="item.value" :key="item">{{ item.label }}</Option>
         </Select>
       </Modal>
@@ -75,7 +75,7 @@ import './departmentManage.scss'
               depItem: {
               },
               modaldepartment:false,
-              depType:departmentType,
+              depType:DEPARTMENTYPE,
             }
         },
         components: {},

@@ -20,7 +20,9 @@ if(process.env.NODE_ENV=="production"){
 }
 */
 
-global.departmentType=[{value:"教学部门",label:"教学部门"},{value:"行政部门",label:"行政部门"}]
+global.DEPARTMENTYPE=[{value:"教学部门",label:"教学部门"},{value:"行政部门",label:"行政部门"}]
+global.COURSEMODULEYEAR=[{value:"三年制",label:"三年制"},{value:"四年制",label:"四年制"},{value:"五年制",label:"五年制"}]
+global.COURSEMODULETYPE=[{value:"基础课",label:"基础课"},{value:"通识通修课",label:"通识通修课"}]
 
 
 
