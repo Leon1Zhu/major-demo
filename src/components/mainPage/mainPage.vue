@@ -28,7 +28,7 @@
                 <div class="layout-assistant">
                   <Menu-item name="1"><router-link to="/departentManage">部门管理</router-link></Menu-item>
                   <Menu-item name="2"><router-link to="/courseModule">课程模块管理</router-link></Menu-item>
-                  <Menu-item name="3"><router-link to="/foo">Go to Foo</router-link></Menu-item>
+                  <Menu-item name="3"><router-link to="/foo">课程技能树</router-link></Menu-item>
                 </div>
               </Menu>
             </div>
