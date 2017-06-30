@@ -5,11 +5,11 @@
           <i-col :span="spanLeft" class="layout-menu-left">
             <Menu active-name="1" theme="dark" width="auto">
               <div class="layout-logo-left"></div>
-              <Menu-item name="1"  :class="{'centerClass': spanLeft < 5}" >
+              <Menu-item name="1"  :class="{'centerClass': spanLeft < 5}"  @click.native="menuitem = menu[0]">
                 <Icon class="animateClass1" type="ios-navigate" :size="iconSize"></Icon>
                 <span class="layout-text">选项 1</span>
               </Menu-item>
-              <Menu-item name="2"  :class="{'centerClass': spanLeft < 5}">
+              <Menu-item name="2"  :class="{'centerClass': spanLeft < 5}"   @click.native="menuitem = menu[1]">
                 <Icon class="animateClass1" type="ios-keypad" :size="iconSize"></Icon>
                 <span class="layout-text">选项 2</span>
               </Menu-item>
@@ -26,9 +26,7 @@
               </i-button>
               <Menu mode="horizontal" active-name="1">
                 <div class="layout-assistant">
-                  <Menu-item name="1"><router-link to="/departentManage">部门管理</router-link></Menu-item>
-                  <Menu-item name="2"><router-link to="/courseModule">课程模块管理</router-link></Menu-item>
-                  <Menu-item name="3"><router-link to="/foo">课程技能树</router-link></Menu-item>
+                  <Menu-item :name="index" v-for="(item,index) in menuitem"><router-link :to="item.link">{{item.name}}</router-link></Menu-item>
                 </div>
               </Menu>
             </div>
@@ -55,7 +53,12 @@ import './mainPage.scss'
         data(){
             return {
               spanLeft: 5,
-              spanRight: 19
+              spanRight: 19,
+              menu:[
+                  [{name:'部门管理',link:'/departentManage'},{name:'课程模块管理',link:'/courseModule'},{name:'课程技能树',link:'/foo'}],
+                  [{name:'课程库管理',link:'/courselibrarymanage'},{name:'专业管理',link:'/majormanage'},{name:'教师管理',link:'/teachermanage'}],
+              ],
+              menuitem:null,
             }
         },
         computed: {
@@ -65,6 +68,7 @@ import './mainPage.scss'
         },
         components: {},
         created(){
+            this.menuitem = this.menu[0]
         },
         mounted(){
         },

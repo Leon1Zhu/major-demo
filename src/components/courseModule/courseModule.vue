@@ -99,7 +99,8 @@ import './courseModule.scss'
                 },
               modalcourse:false,
               courseYear: COURSEMODULEYEAR,
-              courseInfo:{}
+              courseInfo:{},
+              theme2:"light",
             }
         },
         components: {},
