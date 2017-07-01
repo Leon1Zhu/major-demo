@@ -13,7 +13,7 @@
                 <Icon class="animateClass1" type="ios-keypad" :size="iconSize"></Icon>
                 <span class="layout-text">选项 2</span>
               </Menu-item>
-              <Menu-item name="3"  :class="{'centerClass': spanLeft < 5}">
+              <Menu-item name="3"  :class="{'centerClass': spanLeft < 5}"  @click.native="menuitem = menu[2]">
                 <Icon class="animateClass1" type="ios-analytics" :size="iconSize"></Icon>
                 <span class="layout-text">选项 3</span>
               </Menu-item>
@@ -57,6 +57,7 @@ import './mainPage.scss'
               menu:[
                   [{name:'部门管理',link:'/departentManage'},{name:'课程模块管理',link:'/courseModule'},{name:'课程技能树',link:'/foo'}],
                   [{name:'课程库管理',link:'/courselibrarymanage'},{name:'专业管理',link:'/majormanage'},{name:'教师管理',link:'/teachermanage'}],
+                  [{name:'专业培养方案',link:'/traningmainPage'}],
               ],
               menuitem:null,
             }

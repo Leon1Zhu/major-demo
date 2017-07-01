@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import traningrouter from './trainingScheme'
 
 Vue.use(Router)
 
@@ -39,7 +40,8 @@ export default new Router({
         {
           path: '/teachermanage',
           component: teachermanage
-        }
+        },
+        traningrouter
       ]
     }
   ]

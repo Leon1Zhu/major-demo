@@ -94,9 +94,9 @@
     transition: width .2s ease-in-out;
   }
   .ivu-menu-dark{
-    background: #3d3d3d;  
+    background: #3d3d3d;
   }
-  .ivu-menu-item-selected{
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
     background: #333333!important;
   }
   /*响应式*/

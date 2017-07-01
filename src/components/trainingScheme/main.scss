@@ -1,15 +1,30 @@
-/*响应式*/
-@media (min-width: 720px) {
-}
+.trainingMainPage{
+  width:100%;
+  height:100%;
+  position: relative;
+  .training-nav{
+    display: flex;
+    .ivu-tabs{
+      width:100%;
+    }
+    .ivu-cascader-rel input{
+      border: 0px;
+    }
+  }
+  /*响应式*/
+  @media (min-width: 720px) {
+  }
 
-@media (min-width: 1080px) {
-}
+  @media (min-width: 1080px) {
+  }
 
-@media (min-width: 1366px) {
-}
+  @media (min-width: 1366px) {
+  }
 
-@media (min-width: 1680px) {
-}
+  @media (min-width: 1680px) {
+  }
 
-@media (min-width: 1920px) {
+  @media (min-width: 1920px) {
+  }
+
 }
