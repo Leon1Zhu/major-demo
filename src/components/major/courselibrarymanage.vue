@@ -15,7 +15,7 @@
       title="新增教职工"
       @on-ok="ok"
       @on-cancel="cancel">
-      <Form :model="formItem" :label-width="80">
+      <Form  :label-width="80">
         <Form-item label="课程名称">
           <Input placeholder="请输入"></Input>
         </Form-item>
@@ -32,7 +32,7 @@
           <Input placeholder="请输入"></Input>
         </Form-item>
         <Form-item label="学分">
-          <Input-number :max="20" :min="1" v-model="value1"></Input-number>
+          <Input-number :max="20" :min="1" ></Input-number>
         </Form-item>
         <Form-item label="承担院系">
           <Select placeholder="请选择">

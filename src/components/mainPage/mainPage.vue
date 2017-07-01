@@ -30,13 +30,13 @@
                 </div>
               </Menu>
             </div>
-            <div class="layout-breadcrumb">
+            <!--<div class="layout-breadcrumb">
               <Breadcrumb>
                 <Breadcrumb-item href="#">首页</Breadcrumb-item>
                 <Breadcrumb-item href="#">应用中心</Breadcrumb-item>
                 <Breadcrumb-item>某应用</Breadcrumb-item>
               </Breadcrumb>
-            </div>
+            </div>-->
             <div class="layout-content">
               <router-view class="layout-content-main"></router-view>
              <!-- <div class="layout-content-main">内容区域</div>-->
