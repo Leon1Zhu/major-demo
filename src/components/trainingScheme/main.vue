@@ -3,9 +3,9 @@
       <div class="training-nav">
         <Cascader :data="casData" change-on-select placeholder="请选择版本"></Cascader>
         <Tabs value="name1" @on-click="push">
-          <Tab-pane label="目标与规格" name="name1" ></Tab-pane>
-          <Tab-pane label="教学安排表" name="name2"></Tab-pane>
-          <Tab-pane label="职业能力分析" name="name3"></Tab-pane>
+          <Tab-pane label="目标与规格" name="targetspecification" ></Tab-pane>
+          <Tab-pane label="教学安排表" name="teachingarrangement"></Tab-pane>
+          <Tab-pane label="职业能力分析" name="vocationalabilityanalysis"></Tab-pane>
           <Tab-pane label="课程能力分析" name="courseAnalyseModify" ></Tab-pane>
           <Tab-pane label="学时学分比例" name="name5"></Tab-pane>
           <Tab-pane label="课程简介" name="name6"></Tab-pane>
