@@ -5,10 +5,20 @@
   .training-nav{
     display: flex;
     .ivu-tabs{
-      width:100%;
+      width:105%;
+      .ivu-tabs-bar{
+        width:92%;
+        margin-left:4%;
+      }
     }
     .ivu-cascader-rel input{
       border: 0px;
+    }
+  }
+  .training-content{
+    display: flex;
+    .ivu-card-head{
+      display: none;
     }
   }
   /*响应式*/
