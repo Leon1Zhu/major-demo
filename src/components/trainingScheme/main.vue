@@ -2,15 +2,16 @@
     <div class="trainingMainPage">
       <div class="training-nav">
         <Cascader :data="casData" change-on-select placeholder="请选择版本"></Cascader>
-        <Tabs value="name1">
-          <Tab-pane label="目标与规格" name="name1"></Tab-pane>
+        <Tabs value="name1" @on-click="push">
+          <Tab-pane label="目标与规格" name="name1" ></Tab-pane>
           <Tab-pane label="教学安排表" name="name2"></Tab-pane>
           <Tab-pane label="职业能力分析" name="name3"></Tab-pane>
-          <Tab-pane label="课程能力分析" name="name4"></Tab-pane>
+          <Tab-pane label="课程能力分析" name="courseAnalyseModify" ></Tab-pane>
           <Tab-pane label="学时学分比例" name="name5"></Tab-pane>
           <Tab-pane label="课程简介" name="name6"></Tab-pane>
         </Tabs>
       </div>
+      <router-view></router-view>
     </div>
 </template>
 
@@ -78,6 +79,11 @@ import './main.scss'
         },
         mounted(){
         },
-        methods: {}
+        methods: {
+            push(link){
+                console.log(link)
+              this.$router.push({ path: link})
+            }
+        }
     }
 </script>
