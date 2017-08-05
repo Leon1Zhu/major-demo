@@ -8,7 +8,7 @@ global.mainContentFir="各类报纸一站式搜索，新闻热点随时掌握，
 global.mainContentSec="给你带来全新的阅读体验。";
 global.tokenUrl="http://localhost:8011/getToken"
 global.TOKENTIME=new Date();
-global.TOKEN="";
+
 global.ISLOGIN=false;
 global.USERINFO=[];
 
@@ -25,11 +25,13 @@ global.COURSEMODULEYEAR=[{value:"三年制",label:"三年制"},{value:"四年制
 global.COURSEMODULETYPE=[{value:"基础课",label:"基础课"},{value:"通识通修课",label:"通识通修课"}]
 
 
-global.SERVICEURL="localhost:8080";
-
+global.SERVICEURL="http://localhost:8080";
+global.TOKEN="";
+global.TOKENURL="/api/authenticate";
+global.TOKENTIME=null;
 
 if(process.env.NODE_ENV=="production"){
-  global.SERVICEURL="localhost:8080"
+  global.SERVICEURL="http://localhost:8080"
 }
 
 

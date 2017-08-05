@@ -4,15 +4,17 @@
 import  './global'
 import Vue from 'vue'
 import axios from 'axios'
+import api from "./api/index"
 axios.interceptors.request.use(
   config => {
+    console.log(config.url)
     if(config.url.indexOf("/api")>-1){
-      if (TOKEN) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
+     if (TOKEN) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
         config.url = SERVICEURL+config.url;
-        config.headers.Authorization = TOKEN;
+        config.headers.Authorization = "Bearer "+TOKEN;
         console.log("发送请求!")
         console.log(config)
-      }
+     }
     }
     return config;
   },
@@ -48,19 +50,28 @@ axios.interceptors.response.use(
   return cof;
 }
 */
-/*global.refushToken=function(){
-    if(new Date().getTime()-TOKENTIME.getTime()>30*60*1000){
-      console.log("超过半小时，重新获取")
-      Vue.axios.post(tokenUrl).then(function(response){
-        TOKEN = response.data.token;
-        TOKENTIME = new Date();
-      }).catch(function(response){
-      })
+global.refushToken=function(){
+    if(TOKENTIME==null ||new Date().getTime()-TOKENTIME.getTime()>30*60*1000){
+      console.log("token超时，重新获取")
+      getToken()
     }else{
-      console.log("尚未过时，尚能使用")
+      console.log("token尚未过时，尚能使用")
     }
 }
-global.setLoginInfo=function(logininfo,rememberMe){
+
+global.getToken =function(){
+  api.post(SERVICEURL+"/api/authenticate",{username:"admin",password:"admin"},{}).then((response)=>{
+    if(isNull(response.data.id_token)){
+      alert("token获取出错，请刷新页面重试！")
+    }else{
+      TOKEN = response.data.id_token
+      TOKENTIME = new Date();
+    }
+  }).catch((response)=>{
+    alert("token获取出错，请刷新页面重试！")
+  })
+}
+/*global.setLoginInfo=function(logininfo,rememberMe){
     USERINFO = logininfo
     ISLOGIN=true;
     if(rememberMe){

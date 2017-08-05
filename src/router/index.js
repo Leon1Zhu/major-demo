@@ -19,7 +19,7 @@ export default new Router({
   routes: [
     /*{path: '/', component: mainPage},*/
     {path: '*', name: '404', component: notFound},
-    {path: '/mainPage', name: 'mainPage', component: mainPage,
+    {path: '/', name: 'mainPage', component: mainPage,
       children: [
         {
           path: '/departentManage',

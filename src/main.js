@@ -11,16 +11,18 @@ import './common/css/style.scss'
 import './globalFun'
 import './mainFun'
 
+
 Vue.use(iView);
 Vue.config.productionTip = false
-
+refushToken()
 /* eslint-disable no-new */
-const app = new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
-})
+  const app = new Vue({
+    el: '#app',
+    router,
+    template: '<App/>',
+    components: { App }
+  })
+
 router.beforeEach((to, from, next) => {
   app.$Loading.start();
   next()

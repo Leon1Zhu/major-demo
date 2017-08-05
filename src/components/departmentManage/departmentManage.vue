@@ -31,6 +31,7 @@
 
 <script>
 import './departmentManage.scss'
+import api from '../../api/collect'
     export default{
         data(){
             return {
@@ -80,7 +81,11 @@ import './departmentManage.scss'
         },
         components: {},
         created(){
-
+            api.addNewDepparment(1,1,1,1,1).then((response) => {
+                console.log(1111)
+            }).catch((response)=>{
+              console.log(2222)
+            })
         },
         mounted(){
         },
