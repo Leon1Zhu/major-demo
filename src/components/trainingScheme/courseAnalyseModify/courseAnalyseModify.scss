@@ -1,15 +1,67 @@
-/*响应式*/
-@media (min-width: 720px) {
-}
+.courseAnalyseModify{
+  width:100%;
+  height:100%;
+  position: relative;
+  .courseAnalyse{
+    overflow: hidden;
+    margin-top:1%;
+  }
+  .contentData{
+    color: rgba(128, 128, 128, 0.9)
+  }
+  .ivu-collapse-header{
+    color: rgba(0,0,0,.87)!important;
+    .ivu-poptip{
+      position: absolute;
+      right: 0px;
+      top: -23px;
+      .ivu-poptip-popper{
+        left: -178px!important;
+        top: 21px!important;
+      }
+    }
+  }
+  .course-content{
+    display: flex;
+    .content-item{
+      width:49%;
+      margin-left:1%;
+      border-radius: 10px;
+      .item-ability{
+        margin-top:1%;
+        padding:5px;
+        background: #edebec;
+      }
+      .content-span:hover{
+        cursor: pointer;
+      }
+    }
+  }
 
-@media (min-width: 1080px) {
-}
 
-@media (min-width: 1366px) {
-}
+  .ivu-icon-edit{
+    position: absolute;
+    right: 10px;
+    line-height: 200%;
+    z-index:100;
+  }
+  .center-left{
+    float: left;
+  }
+  /*响应式*/
+  @media (min-width: 720px) {
+  }
 
-@media (min-width: 1680px) {
-}
+  @media (min-width: 1080px) {
+  }
 
-@media (min-width: 1920px) {
+  @media (min-width: 1366px) {
+  }
+
+  @media (min-width: 1680px) {
+  }
+
+  @media (min-width: 1920px) {
+  }
+
 }

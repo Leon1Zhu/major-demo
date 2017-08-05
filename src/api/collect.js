@@ -4,13 +4,17 @@
 import Vue from 'vue'
 import api from './index'
 
-/*var getCollectsByUserId = "/api/alinews-collects";*/
+var baseDepUrl = "/api/base-departments";
 
 export default {
- /* getCollectsByUserId : function(userid){
-    var params = {
-      userid:userid
+  addNewDepparment : function(depCode,depName,depType,depShotName,depSort){
+    var bodyparams = {
+      depCode:depCode,
+      depName:depName,
+      depType:depType,
+      depShotName:depShotName,
+      depSort:depSort
     }
-    return api.get(getCollectsByUserId,params)
-  }*/
+    return api.post(baseDepUrl,bodyparams,{})
+  }
 }

@@ -25,7 +25,12 @@ global.COURSEMODULEYEAR=[{value:"三年制",label:"三年制"},{value:"四年制
 global.COURSEMODULETYPE=[{value:"基础课",label:"基础课"},{value:"通识通修课",label:"通识通修课"}]
 
 
+global.SERVICEURL="localhost:8080";
 
+
+if(process.env.NODE_ENV=="production"){
+  global.SERVICEURL="localhost:8080"
+}
 
 
 

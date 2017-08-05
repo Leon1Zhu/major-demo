@@ -1,19 +1,19 @@
 <template>
     <div class="mainPage">
-      <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
+      <div class="layout" :class="{'layout-hide-text': spanLeft < 4}">
         <Row type="flex">
           <i-col :span="spanLeft" class="layout-menu-left">
             <Menu active-name="1" theme="dark" width="auto">
               <div class="layout-logo-left"></div>
-              <Menu-item name="1"  :class="{'centerClass': spanLeft < 5}"  @click.native="menuitem = menu[0]">
+              <Menu-item name="1"  :class="{'centerClass': spanLeft < 4}"  @click.native="menuitem = menu[0]">
                 <Icon class="animateClass1" type="ios-navigate" :size="iconSize"></Icon>
                 <span class="layout-text">选项 1</span>
               </Menu-item>
-              <Menu-item name="2"  :class="{'centerClass': spanLeft < 5}"   @click.native="menuitem = menu[1]">
+              <Menu-item name="2"  :class="{'centerClass': spanLeft < 4}"   @click.native="menuitem = menu[1]">
                 <Icon class="animateClass1" type="ios-keypad" :size="iconSize"></Icon>
                 <span class="layout-text">选项 2</span>
               </Menu-item>
-              <Menu-item name="3"  :class="{'centerClass': spanLeft < 5}"  @click.native="menuitem = menu[2]">
+              <Menu-item name="3"  :class="{'centerClass': spanLeft < 4}"  @click.native="menuitem = menu[2]">
                 <Icon class="animateClass1" type="ios-analytics" :size="iconSize"></Icon>
                 <span class="layout-text">选项 3</span>
               </Menu-item>
@@ -52,8 +52,8 @@ import './mainPage.scss'
     export default{
         data(){
             return {
-              spanLeft: 5,
-              spanRight: 19,
+              spanLeft: 4,
+              spanRight: 20,
               menu:[
                   [{name:'部门管理',link:'/departentManage'},{name:'课程模块管理',link:'/courseModule'},{name:'课程技能树',link:'/foo'}],
                   [{name:'课程库管理',link:'/courselibrarymanage'},{name:'专业管理',link:'/majormanage'},{name:'教师管理',link:'/teachermanage'}],
@@ -64,7 +64,7 @@ import './mainPage.scss'
         },
         computed: {
           iconSize () {
-            return this.spanLeft === 5 ? 14 : 24;
+            return this.spanLeft === 4 ? 14 : 24;
           }
         },
         components: {},
@@ -75,12 +75,12 @@ import './mainPage.scss'
         },
         methods: {
           toggleClick () {
-            if (this.spanLeft === 5) {
+            if (this.spanLeft === 4) {
               this.spanLeft = 2;
               this.spanRight = 22;
             } else {
-              this.spanLeft = 5;
-              this.spanRight = 19;
+              this.spanLeft = 4;
+              this.spanRight = 20;
             }
           },
           push(val){

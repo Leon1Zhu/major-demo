@@ -4,15 +4,6 @@
 import  './global'
 import Vue from 'vue'
 import axios from 'axios'
-/*global.setNoticConfig= function(title,desc,duration,key,onClose){
-  let cof = {};
-  if(title!=null)cof.title=title;
-  if(desc!=null)cof.desc=desc;
-  if(duration!=null)cof.duration=duration;
-  if(key!=null)cof.key=key;
-  if(onClose!=null)cof.onClose=onClose;
-  return cof;
-}
 axios.interceptors.request.use(
   config => {
     if(config.url.indexOf("/api")>-1){
@@ -46,7 +37,17 @@ axios.interceptors.response.use(
       }
     }
     return Promise.reject(error.response.data)   // 返回接口返回的错误信息
-  });*/
+  });
+/*global.setNoticConfig= function(title,desc,duration,key,onClose){
+  let cof = {};
+  if(title!=null)cof.title=title;
+  if(desc!=null)cof.desc=desc;
+  if(duration!=null)cof.duration=duration;
+  if(key!=null)cof.key=key;
+  if(onClose!=null)cof.onClose=onClose;
+  return cof;
+}
+*/
 /*global.refushToken=function(){
     if(new Date().getTime()-TOKENTIME.getTime()>30*60*1000){
       console.log("超过半小时，重新获取")
