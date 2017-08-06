@@ -4,26 +4,26 @@
 import Vue from 'vue'
 Vue.prototype.$infomsg = function(title,nodesc){
   this.$Notice.info({
-    title: title,
-    desc: nodesc
+    title: title ? title : '',
+    desc: nodesc ? nodesc :  ""
   });
 }
 Vue.prototype.$successmsg = function(title,nodesc){
   this.$Notice.success({
-    title: title,
-    desc: nodesc
+    title: title ? title : '',
+    desc: nodesc ? nodesc :  ""
   });
 }
 Vue.prototype.$warningmsg = function(title,nodesc){
   this.$Notice.warning({
-    title: title,
-    desc: nodesc
+    title: title ? title : '',
+    desc: nodesc ? nodesc :  ""
   });
 }
 Vue.prototype.$errormsg = function(title,nodesc){
   this.$Notice.error({
-    title: title,
-    desc: nodesc
+    title: title ? title : '',
+    desc: nodesc ? nodesc :  ""
   });
 }
 
