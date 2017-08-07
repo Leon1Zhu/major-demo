@@ -3,21 +3,9 @@
         <div class="moduleMenu">
           <Menu  active-name="1">
             <Menu-group title="课程模块列表">
-              <Menu-item name="1" @click.native="changeModule()">
+              <Menu-item v-for="item in courseGroupList" :name="item.id" @click.native="changeModule()">
                 <Icon type="document-text"></Icon>
-                通识通修课程
-              </Menu-item>
-              <Menu-item name="2" @click.native="changeModule()">
-                <Icon type="chatbubbles"></Icon>
-                技术平台课程
-              </Menu-item>
-              <Menu-item name="3" @click.native="changeModule()">
-                <Icon type="document-text"></Icon>
-                专项能力课程
-              </Menu-item>
-              <Menu-item name="4" @click.native="changeModule()">
-                <Icon type="chatbubbles"></Icon>
-                个性化学习课程
+                {{item.groupName}}
               </Menu-item>
             </Menu-group>
           </Menu>
@@ -71,23 +59,35 @@
 
 
       <!--新增，修改课程模块弹出框-->
-      <Modal
-        title="课程模块管理"
-        v-model="modalcourse"
-        :mask-closable="false">
-        <Input class="course-info-model" v-model="courseInfo.moduleName" placeholder="模块名称" ></Input>
-        <Select class="course-info-model"   placeholder="请选择模块学年制">
-          <Option v-for="item in courseYear" :value="item.value" :key="item">{{ item.label }}</Option>
-        </Select>
-        <Select class="course-info-model"   placeholder="请选择模块学年制">
-          <Option v-for="item in courseYear" :value="item.value" :key="item">{{ item.label }}</Option>
-        </Select>
-      </Modal>
+      <el-dialog
+        title="新增课程模块"
+        :visible.sync="modalcourse"
+        size="tiny"
+      >
+        <Input class="course-info-model" v-model="courseInfo.groupName">
+        <span slot="prepend">模块名称</span>
+        </Input>
+        <Input class="course-info-model" v-model="courseInfo.groupType">
+        <span slot="prepend">模块类型</span>
+        </Input>
+        <Input class="course-info-model" type="number" :number="isnumber" v-model="courseInfo.groupSort">
+        <span slot="prepend">模块序列</span>
+        </Input>
+        <!--
+       <Select class="course-info-model"   placeholder="请选择模块学年制">
+         <Option v-for="item in courseYear" :value="item.value" :key="item">{{ item.label }}</Option>
+       </Select>-->
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="modalcourse = false">取 消</el-button>
+          <el-button type="primary" @click="addNewCourseGrouup">确 定</el-button>
+        </span>
+      </el-dialog>
     </div>
 </template>
 
 <script>
 import './courseModule.scss'
+import api from '../../api/courseGroup'
     export default{
         data(){
             return {
@@ -100,16 +100,31 @@ import './courseModule.scss'
                 },
               modalcourse:false,
               courseYear: COURSEMODULEYEAR,
-              courseInfo:{},
+              isnumber:true,
+              courseInfo:{
+                groupName:'',
+                groupType:'',
+                groupSort:'',
+              },
+              courseGroupList:null,
               theme2:"light",
             }
         },
         components: {},
         created(){
+            this.getAllCourseGroup()
         },
         mounted(){
         },
         methods: {
+          getAllCourseGroup(){
+              let that = this;
+              api.getAllCourseGroup().then((response) =>{
+                 that.courseGroupList = response.data
+              }).catch((response)=>{
+                 that.$errormsg('','课程模块列表获取出错，请稍后重试！')
+              })
+          },
           getCourseData(){
               return [{
                 key: '1',
@@ -164,6 +179,20 @@ import './courseModule.scss'
           },
           handleChange(targetKeys, direction, moveKeys){
             this.courseTargetKeys = targetKeys;
+          },
+          addNewCourseGrouup(){
+            let that = this;
+              if(isNull(that.courseInfo.groupName) || isNull(that.courseInfo.groupType) ||isNull(that.courseInfo.groupSort)){
+                  that.$warningmsg('','请先填写完整表单再进行提交！');
+                  return;
+              }
+            api.addNewCourseGroup(that.courseInfo).then((response) =>{
+                that.$successmsg('',"课程模块创建成功。")
+              that.getAllCourseGroup()
+              that.modalcourse=false;
+            }).catch((response)=>{
+                that.$errormsg('',"课程模块创建失败！")
+            })
           }
         }
     }

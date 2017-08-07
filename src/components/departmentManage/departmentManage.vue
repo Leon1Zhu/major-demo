@@ -15,26 +15,6 @@
           </div>
         </Card>
       </div>
-      <!--新增，修改部门弹出框-->
-     <!-- <Modal
-        title="部门管理"
-        v-model="modaldepartment"
-        @on-ok="addNewDep"
-        okText="确定"
-        >
-        <Input class="dep-info-model" v-model="depItem.depName">
-        <span slot="prepend">部门名称</span>
-        </Input>
-        <Input class="dep-info-model" v-model="depItem.depShotName">
-        <span slot="prepend">部门简称</span>
-        </Input>
-        <Input class="dep-info-model" v-model="depItem.depCode">
-        <span slot="prepend">部门编码</span>
-        </Input>
-        <Select class="dep-info-model" v-model="depItem.depType" placeholder="请选择部门类型">
-          <Option v-for="item in depType" :value="item.value" :key="item">{{ item.label }}</Option>
-        </Select>
-      </Modal>-->
 
       <el-dialog
         title="部门管理"
@@ -115,7 +95,10 @@ import api from '../../api/department'
               api.addNewDepparment(that.depItem.depCode,that.depItem.depName,that.depItem.depType,that.depItem.depShotName,0).then((response) => {
                 this.$successmsg("","部门"+that.depItem.depName+"创建成功！");
                 that.departmentInfo.push(response.data)
-                that.depItem={};
+                that.depItem.depName=null;
+                that.depItem.depShotName=null;
+                that.depItem.depCode=null;
+                that.depItem.depType=null;
                 that.modaldepartment = false;
               }).catch((response)=>{
                 that.modaldepartment = false;
