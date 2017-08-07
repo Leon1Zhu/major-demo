@@ -6,7 +6,9 @@ html,body,#app{
 .centerClass{
   text-align: center;
 }
-
+.el-dialog__body{
+  padding:15px 20px;
+}
 
 .animateClass1{
   -webkit-transition: all .1s ease-in-out 0s;

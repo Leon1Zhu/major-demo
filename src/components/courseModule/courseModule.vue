@@ -1,7 +1,7 @@
 <template>
     <div class="courseModule">
         <div class="moduleMenu">
-        <!--  <Menu  active-name="1">
+          <Menu  active-name="1">
             <Menu-group title="课程模块列表">
               <Menu-item name="1" @click.native="changeModule()">
                 <Icon type="document-text"></Icon>
@@ -20,8 +20,8 @@
                 个性化学习课程
               </Menu-item>
             </Menu-group>
-          </Menu>-->
-          <Menu :theme="theme2">
+          </Menu>
+          <!--<Menu :theme="theme2">
             <Menu-group title="课程模块列表">
             </Menu-group>
             <Submenu name="1">
@@ -48,7 +48,7 @@
                 <Menu-item name="3-2"  @click.native="changeModule()">通识通修课程</Menu-item>
                 <Menu-item name="3-3"  @click.native="changeModule()">通识通修课程</Menu-item>
             </Submenu>
-          </Menu>
+          </Menu>-->
         </div>
       <div class="moduleContent">
         <div class="button-div">
@@ -60,7 +60,7 @@
           :list-style="listStyle"
           :target-keys="courseTargetKeys"
           :render-format="render"
-          :operations="['移出模块','加入模块']"
+          :operations="['移出课程模块','加入课程模块']"
           filterable
           @on-change="handleChange">
           <div :style="{float: 'right', margin: '5px'}">
@@ -96,6 +96,7 @@ import './courseModule.scss'
                 titles:['所有课程列表', '模块已选课程列表'],
                 listStyle: {
                   height: '400px',
+                  width: '280px'
                 },
               modalcourse:false,
               courseYear: COURSEMODULEYEAR,

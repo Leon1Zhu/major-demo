@@ -10,13 +10,13 @@
             <p >部门编号:{{department.depCode}}</p>
             <p >部门类型:{{department.depType}}</p>
             <p >部门简称:{{department.depShotName}}</p>
-            <i class="iconfont icon-bianji pointer font-size-22"  @click="managedepartment(department)"></i>
+            <i class="iconfont icon-bianji pointer font-size-22"  @click="managedepartment(department,index)"></i>
             <i class="iconfont icon-shanchu pointer font-size-22" @click="deleteDep(department,index)"></i>
           </div>
         </Card>
       </div>
       <!--新增，修改部门弹出框-->
-      <Modal
+     <!-- <Modal
         title="部门管理"
         v-model="modaldepartment"
         @on-ok="addNewDep"
@@ -34,7 +34,30 @@
         <Select class="dep-info-model" v-model="depItem.depType" placeholder="请选择部门类型">
           <Option v-for="item in depType" :value="item.value" :key="item">{{ item.label }}</Option>
         </Select>
-      </Modal>
+      </Modal>-->
+
+      <el-dialog
+        title="部门管理"
+        :visible.sync="modaldepartment"
+        size="tiny"
+        >
+          <Input class="dep-info-model" v-model="depItem.depName">
+          <span slot="prepend">部门名称</span>
+          </Input>
+          <Input class="dep-info-model" v-model="depItem.depShotName">
+          <span slot="prepend">部门简称</span>
+          </Input>
+          <Input class="dep-info-model" v-model="depItem.depCode">
+          <span slot="prepend">部门编码</span>
+          </Input>
+          <Select class="dep-info-model" v-model="depItem.depType" placeholder="请选择部门类型">
+            <Option v-for="item in depType" :value="item.value" :key="item">{{ item.label }}</Option>
+          </Select>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="modaldepartment = false">取 消</el-button>
+          <el-button type="primary" @click="addNewDep">确 定</el-button>
+        </span>
+      </el-dialog>
     </div>
 </template>
 
@@ -49,14 +72,9 @@ import api from '../../api/department'
               },
               modaldepartment:false,
               depType:DEPARTMENTYPE,
-              depItemTemp:{
-                id:null,
-                depCode:null,
-                depName:null,
-                depType:null,
-                depShotName:null,
-                depSort:null
-              }
+              depItemTemp:{},
+              changeFlag:false,
+              depIndex:null,
             }
         },
         components: {},
@@ -68,7 +86,7 @@ import api from '../../api/department'
         },
         methods: {
           getAllDep(){
-              var that = this;
+              let that = this;
              api.getAllDep().then((response)=>{
                that.departmentInfo = response.data
              }).catch((response)=>{
@@ -82,24 +100,42 @@ import api from '../../api/department'
                 this.$warningmsg('', "请先填写完整表单再进行提交！");
                 return;
             }
-            api.addNewDepparment(that.depItem.depCode,that.depItem.depName,that.depItem.depType,that.depItem.depShotName,0).then((response) => {
-               this.$successmsg("","部门"+that.depItem.depName+"创建成功！");
-               that.depItem={};
-            }).catch((response)=>{
-               this.$warningmsg("部门创建失败！");
-            })
+            if(this.changeFlag){
+                api.changeDepartment(that.depItemTemp).then((response)=>{
+                  that.departmentInfo[that.depIndex].depCode=that.depItemTemp.depCode
+                  that.departmentInfo[that.depIndex].depName=that.depItemTemp.depName
+                  that.departmentInfo[that.depIndex].depType=that.depItemTemp.depType
+                  that.departmentInfo[that.depIndex].depShotName=that.depItemTemp.depShotName
+                  that.departmentInfo[that.depIndex].depSort=that.depItemTemp.depSort
+                  that.modaldepartment = false;
+                }).catch((response)=>{
+                    alert("部门信息修改失败！")
+                })
+            }else{
+              api.addNewDepparment(that.depItem.depCode,that.depItem.depName,that.depItem.depType,that.depItem.depShotName,0).then((response) => {
+                this.$successmsg("","部门"+that.depItem.depName+"创建成功！");
+                that.departmentInfo.push(response.data)
+                that.depItem={};
+                that.modaldepartment = false;
+              }).catch((response)=>{
+                that.modaldepartment = false;
+                that.$warningmsg("部门创建失败！");
+              })
+            }
           },
-          managedepartment(val){
-              if(!isNull(val.depName)){
+          managedepartment(val,index){
+              if(!isNull(val.id)){
+                  this.depIndex = index
                 this.depItemTemp.id=val.id
                 this.depItemTemp.depCode=val.depCode
                 this.depItemTemp.depName=val.depName
                 this.depItemTemp.depType=val.depType
                 this.depItemTemp.depShotName=val.depShotName
                 this.depItemTemp.depSort=val.depSort
-                console.log( this.depItemTemp)
                   this.depItem =  this.depItemTemp
+                this.changeFlag=true;
               }else{
+                this.changeFlag=false;
                 this.depItem = {}
               }
               this.modaldepartment = true
@@ -110,9 +146,11 @@ import api from '../../api/department'
                   api.deleteDepartment(val.id).then((response) =>{
                       that.departmentInfo.splice(index,1)
                   }).catch((response)=>{
-
+                    that.$errormsg("","部门删除失败！")
                   })
-              },function(){})
+              },function(){
+
+              })
           }
         }
     }

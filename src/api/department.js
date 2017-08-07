@@ -5,7 +5,6 @@ import Vue from 'vue'
 import api from './index'
 
 var baseDepUrl = "/api/base-departments";
-var idurl = "/api/base-departments{/id}"
 
 
 export default {
@@ -19,6 +18,9 @@ export default {
     }
     return api.post(baseDepUrl,bodyparams,{})
   },
+  changeDepartment : function(dep){
+      return api.put(baseDepUrl,dep,{})
+  },
   getAllDep: function(){
     var pageable={
       page:0,
@@ -30,6 +32,6 @@ export default {
       var params={
         id:id
       }
-      return api.delete(baseDepUrl,params)
+      return api.delete(baseDepUrl+'/'+id,{})
   }
 }

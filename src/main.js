@@ -4,6 +4,7 @@ import App from './App'
 import router from './router'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';    // 使用 CSS
+import {Dialog,Button} from 'element-ui'
 import './common/css/reset.css'
 import './filter'
 import './common/css/fontClass.css'
@@ -12,6 +13,8 @@ import './globalFun'
 import './mainFun'
 import api from './api/index'
 
+Vue.use(Dialog)
+Vue.use(Button)
 Vue.use(iView);
 Vue.config.productionTip = false
 /* var refushTokenT =function(){
