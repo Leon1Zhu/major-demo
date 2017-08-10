@@ -7,10 +7,7 @@ import axios from 'axios'
 import api from "./api/index"
 axios.interceptors.request.use(
   config => {
-    console.log(config.url)
     if(config.url.indexOf("/api")>-1){
-      console.log(1111)
-      console.log(TOKEN)
      if (TOKEN) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
         config.url = SERVICEURL+config.url;
         config.headers.Authorization = "Bearer "+TOKEN;

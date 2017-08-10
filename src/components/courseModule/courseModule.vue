@@ -3,7 +3,7 @@
         <div class="moduleMenu">
           <Menu  active-name="1">
             <Menu-group title="课程模块列表">
-              <Menu-item v-for="item in courseGroupList" :name="item.id" @click.native="changeModule()">
+              <Menu-item v-for="item in courseGroupList" :name="item.id" @click.native="changeModule(item.id)">
                 <Icon type="document-text"></Icon>
                 {{item.groupName}}
               </Menu-item>
@@ -88,11 +88,12 @@
 <script>
 import './courseModule.scss'
 import api from '../../api/courseGroup'
+import courseApi from '../../api/baseCourse'
     export default{
         data(){
             return {
-                coursedata:this.getCourseData(),
-                courseTargetKeys:this.getTargetKeys(),
+                coursedata:[],
+                courseTargetKeys:[],
                 titles:['所有课程列表', '模块已选课程列表'],
                 listStyle: {
                   height: '400px',
@@ -107,12 +108,14 @@ import api from '../../api/courseGroup'
                 groupSort:'',
               },
               courseGroupList:null,
+              changItem:null,
               theme2:"light",
             }
         },
         components: {},
         created(){
             this.getAllCourseGroup()
+            this.getCourseData()
         },
         mounted(){
         },
@@ -121,64 +124,57 @@ import api from '../../api/courseGroup'
               let that = this;
               api.getAllCourseGroup().then((response) =>{
                  that.courseGroupList = response.data
+                that.changItem = that.courseGroupList[0].id
+                that.getTargetKeys(that.changItem)
               }).catch((response)=>{
                  that.$errormsg('','课程模块列表获取出错，请稍后重试！')
               })
           },
           getCourseData(){
-              return [{
-                key: '1',
-                courseNo:'1',
-                courseName:"java面向对象编程",
-                courseRemark:"三年制",
-              },{
-                key: '2',
-                courseNo:'1',
-                courseName:"java面向对象编程",
-                courseRemark:"三年制",
-              },{
-                key: '3',
-                courseNo:'1',
-                courseName:"java面向对象编程",
-                courseRemark:"三年制",
-              },{
-                key: '4',
-                courseNo:'1',
-                courseName:"java面向对象编程",
-                courseRemark:"三年制",
-              },{
-                key: '5',
-                courseNo:'1',
-                courseName:"java面向对象编程",
-                courseRemark:"三年制",
-              },{
-                key: '6',
-                courseNo:'1',
-                courseName:"java面向对象编程",
-                courseRemark:"三年制",
-              },{
-                key: '7',
-                courseNo:'1',
-                courseName:"java面向对象编程",
-                courseRemark:"三年制",
-              }]
+              var that = this;
+           courseApi.getAllcourseWithNoPage().then((response)=>{
+             var code =[];
+             response.data.forEach(function(item){
+                 item.key = ''+item.id+''
+             })
+
+             that.coursedata =response.data
+            }).catch((response)=>{
+              that.$errormsg("",'课程信息获取出错！');
+            })
           },
-          changeModule(){
-           /* this.coursedata=this.getCourseData(),*/
-            this.courseTargetKeys=this.getTargetKeys()
+          changeModule(id){
+              if(this.changItem != id){
+                  this.changItem = id
+                this.getTargetKeys(id)
+              }
+
           },
-          getTargetKeys(){
-            return this.getCourseData().filter(() => Math.random() * 2 > 1).map(item => item.key);
+          getTargetKeys(id){
+               let that = this;
+               api.getItemListByGroupId(id).then((response)=>{
+                   let itemList =[];
+                   for(let i=0;i<response.data.length;i++){
+                     itemList.push(''+response.data[i].course.id+'')
+                   }
+                 that.courseTargetKeys = itemList
+               }).catch((response)=>{
+                   alert("出错啦")
+                 that.courseTargetKeys=[];
+               })
           },
           render(item){
-              if(isNull(item.courseRemark)) return item.courseName;
-            return item.courseName + ' - ' + item.courseRemark;
+              if(isNull(item.courseType)) return item.courseName;
+            return item.courseName + ' - ' + item.courseType;
           },
           reloadData(){
               //刷新数据
           },
           handleChange(targetKeys, direction, moveKeys){
-            this.courseTargetKeys = targetKeys;
+            let that = this;
+            api.manageItem(that.changItem,moveKeys,direction).then((response)=>{
+              that.courseTargetKeys = targetKeys;
+            })
           },
           addNewCourseGrouup(){
             let that = this;
