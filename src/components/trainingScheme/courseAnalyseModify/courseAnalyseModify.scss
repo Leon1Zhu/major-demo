@@ -48,6 +48,24 @@
   .center-left{
     float: left;
   }
+
+  .drawer-course-item{
+    padding-left:4%;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-top:1%;
+    color: #5cadff;
+    font-size: 0.9rem;
+    .icon-bookmarkwhite{
+      font-size:0.9rem;
+    }
+    .course-item-text{
+      margin-left:2px;
+    }
+  }
+
+
+
   /*响应式*/
   @media (min-width: 720px) {
   }

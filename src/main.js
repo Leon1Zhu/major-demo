@@ -4,6 +4,7 @@ import App from './App'
 import router from './router'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';    // 使用 CSS
+import 'muse-components/styles/base.less' // 加载基础的样式
 import {Dialog,Button} from 'element-ui'
 import './common/css/reset.css'
 import './filter'
@@ -11,8 +12,9 @@ import './common/css/fontClass.css'
 import './common/css/style.scss'
 import './globalFun'
 import './mainFun'
+import drawer from 'muse-components/drawer'
 import api from './api/index'
-
+Vue.component(drawer.name, drawer)
 Vue.use(Dialog)
 Vue.use(Button)
 Vue.use(iView);

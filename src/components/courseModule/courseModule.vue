@@ -42,6 +42,7 @@
         <div class="button-div">
           <Button class="add-dep-button" type="info" icon="plus" @click.native="modalcourse=true">新增课程模块</Button>
         </div>
+
         <Transfer
           :titles="titles"
           :data="coursedata"
@@ -50,11 +51,15 @@
           :render-format="render"
           :operations="['移出课程模块','加入课程模块']"
           filterable
-          @on-change="handleChange">
+          @on-change="handleChange"
+        style="position: relative;">
           <div :style="{float: 'right', margin: '5px'}">
             <i-button type="ghost" size="small" @click="reloadData">刷新</i-button>
+
           </div>
+
         </Transfer>
+
       </div>
 
 
@@ -159,8 +164,7 @@ import courseApi from '../../api/baseCourse'
                    }
                  that.courseTargetKeys = itemList
                }).catch((response)=>{
-                   alert("出错啦")
-                 that.courseTargetKeys=[];
+                   that.$errormsg("",'已添加课程列表获取出错，请从新获取！');
                })
           },
           render(item){
